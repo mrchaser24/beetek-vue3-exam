@@ -7,5 +7,16 @@
 </template>
 
 <script setup>
-  //
+import { onMounted, onUnmounted } from 'vue'
+import { useAuth } from '@/composables/useAuth'
+
+const { initAuth, cleanup } = useAuth()
+
+onMounted(() => {
+  initAuth()
+})
+
+onUnmounted(() => {
+  cleanup()
+})
 </script>
