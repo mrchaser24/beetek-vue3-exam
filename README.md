@@ -106,10 +106,10 @@ yarn install
 ### 5. Run the Development Server
 
 ```bash
-# Using npm
-npm run dev
+# Upon cloning install package
+yarn install
 
-# Using yarn
+# start dev server
 yarn dev
 ```
 
@@ -140,36 +140,14 @@ src/
 ## � Available Scripts
 
 ```bash
+# Install packages
+yarn install
+
 # Development server
-npm run dev
+yarn dev
 
 # Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Lint and fix files
-npm run lint
-```
-
-## 🔒 Security Rules (Firestore)
-
-For production, update your Firestore security rules to ensure data isolation:
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // Items collection - users can only access their own items
-    match /items/{itemId} {
-      allow read, write: if request.auth != null && 
-                         request.auth.uid == resource.data.userId;
-      allow create: if request.auth != null && 
-                    request.auth.uid == request.resource.data.userId;
-    }
-  }
-}
+yarn build
 ```
 
 ## 📱 Usage
@@ -209,28 +187,6 @@ service cloud.firestore {
 ```bash
 npm run build
 ```
-
-### Deploy to Firebase Hosting (Optional)
-
-1. Install Firebase CLI:
-   ```bash
-   npm install -g firebase-tools
-   ```
-
-2. Login to Firebase:
-   ```bash
-   firebase login
-   ```
-
-3. Initialize Firebase in your project:
-   ```bash
-   firebase init hosting
-   ```
-
-4. Deploy:
-   ```bash
-   firebase deploy
-   ```
 
 ## 🤝 Contributing
 
